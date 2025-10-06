@@ -1,8 +1,11 @@
-
 function HomePage() {
   return (
-    <div>HomePage</div>
-  )
+    <div style={{ border: "5px solid pink" }}>
+   hola
+   aaa
+   <p>caca</p>
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;
