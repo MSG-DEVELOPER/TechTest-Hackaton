@@ -1,8 +1,8 @@
 function HomePage() {
   return (
-    <div style={{ border: "5px solid pink" }}>
+    <div className="bg-yellow-500">
    hola
-   aaa
+   aaaaa
    <p>caca</p>
     </div>
   );
