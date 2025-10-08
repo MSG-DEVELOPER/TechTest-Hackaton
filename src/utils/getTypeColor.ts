@@ -21,6 +21,8 @@ export function getTypeColor(type: string): string {
       return "bg-yellow-700 text-white";
     case "fairy":
       return "bg-pink-400 text-white";
+    case "all": // <--- añadimos aquí
+      return "bg-gray-300 text-black";
 
     default:
       return "bg-gray-200 text-gray-800";

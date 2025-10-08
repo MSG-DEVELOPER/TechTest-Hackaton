@@ -21,15 +21,15 @@ function PokemonCard({ pokemon }: PokemonCardProps) {
       <img
         src={pokemon.image}
         alt={pokemon.name}
-        className="mx-auto w-30 h-30 object-contain -mt-5"
+        className="mx-auto w-28 h-28 object-contain -mt-5"
       />
-      <p className="font-bold  capitalize -mt-3">{pokemon.name}</p>
+      <p className="font-bold  capitalize -mt-5">{pokemon.name}</p>
 
       <div className="flex justify-center gap-1 mt-1 ">
         {pokemon.types.map((type, index) => (
           <span
             key={index}
-            className={`text-xs px-2 py-1 rounded-full capitalize ${getTypeColor(
+            className={`text-xs px-1  rounded-full capitalize ${getTypeColor(
               type
             )}`}
           >
