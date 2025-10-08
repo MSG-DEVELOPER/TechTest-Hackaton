@@ -9,22 +9,22 @@ function HomePage() {
   return (
     <div className="flex flex-col h-full p-2 gap-1">
       
-      <div className=" h-[8%] flex items-center justify-center">
+      <div className=" h-[7%] flex items-center justify-center">
        <Header/>
       </div>
 
       {/* Fila 2 - Selectores de tags */}
-      <div className="border border-gray-400 h-[8%] overflow-x-auto flex items-center">
+      <div className="border border-gray-400 h-[7%] overflow-x-auto flex items-center">
         Tags
       </div>
 
       {/* Fila 3 - Barra de búsqueda */}
-      <div className="border border-gray-400 h-[8%] flex items-center justify-center">
+      <div className="border border-gray-400 h-[7%] flex items-center justify-center">
         Search
       </div>
 
       {/* Fila 4 - Zona de Pokémon */}
-      <div className="border border-gray-400 flex-1 overflow-auto">
+      <div className=" flex-1 overflow-auto">
        <RenderZone/>
       </div>
     </div>
