@@ -1,4 +1,6 @@
 import { getTypeColor } from "../../../utils/getTypeColor";
+import { useNavigate } from "react-router-dom";
+
 
 interface Pokemon {
   id: number;
@@ -12,8 +14,12 @@ interface PokemonCardProps {
 }
 
 function PokemonCard({ pokemon }: PokemonCardProps) {
+
+  const navigate = useNavigate();
+
   const handleViewDetails = () => {
-    alert(`Viewing details for ${pokemon.name}`);
+    
+    navigate(`/details/${pokemon.id}`);
   };
 
   return (

@@ -1,16 +1,3 @@
-//https://pokeapi.co/api/v2/pokemon/?limit=50 los 50 primeros
-//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png imagen a usar con id dinamico
-
-//https://pokeapi.co/api/v2/pokemon/1 detalles
-// dentro del json que nos devuelve , .name es el nombre
-// .id el id
-// .height altura en entero , hay que dividir entre 10
-//.weight peso hay que dividir entre 10
-
-//const types = data.types.map(t => t.type.name);
-//console.log(types); // ["grass", "poison"]
-// para obtener los tipos 
-
 interface PokemonSummary {
   name: string;
   url: string;
