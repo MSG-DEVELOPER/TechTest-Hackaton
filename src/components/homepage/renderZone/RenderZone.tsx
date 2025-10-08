@@ -10,8 +10,12 @@ interface Pokemon {
   types: string[];
 }
 
+interface SearchBarFilter {
+  searchTerm: string;
+}
 
-function RenderZone() {
+
+function RenderZone({searchTerm}:SearchBarFilter) {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
   useEffect(() => {
@@ -27,13 +31,28 @@ function RenderZone() {
     fetchData();
   }, []);
 
-  return (
-    <div className="grid grid-cols-2 gap-1 p-1 overflow-y-auto h-full">
-      {pokemons.map((pokemon) => (
-        <PokemonCard key={pokemon.id} pokemon={pokemon} />
-      ))}
-    </div>
+   // Filtramos por nombre antes de renderizar
+  const filteredPokemons = pokemons.filter(pokemon =>
+    pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+
+  return (
+  <div className="flex flex-col h-full">
+    {filteredPokemons.length === 0 ? (
+      <p className="text-center text-red-500 font-semibold mt-4">
+        No s'han trobat pokémons
+      </p>
+    ) : (
+      <div className="grid grid-cols-2 gap-1 p-1 overflow-y-auto h-full">
+        {filteredPokemons.map(pokemon => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </div>
+    )}
+  </div>
+);
+
 }
 
 export default RenderZone;
