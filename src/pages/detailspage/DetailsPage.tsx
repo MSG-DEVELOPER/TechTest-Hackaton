@@ -10,6 +10,12 @@ interface PokemonDetails {
   types: string[];
   height: number;
   weight: number;
+  stats: {
+    hp: number;
+    attack: number;
+    defense: number;
+    speed: number;
+  };
 }
 
 function DetailsPage() {
@@ -53,7 +59,7 @@ function DetailsPage() {
           ⏮
         </button>
         <p className="text-base font-semibold leading-none capitalize">
-        #{pokemon.id} {pokemon.name}
+          #{pokemon.id} {pokemon.name}
         </p>
       </div>
 
@@ -81,14 +87,48 @@ function DetailsPage() {
       </div>
 
       {/* Fila 5: Height & Weight */}
-      <div className="w-full border flex justify-center gap-4 text-xs">
+      <div className="w-full flex justify-center gap-4 text-xs">
         <span>Height: {pokemon.height} m</span>
         <span>Weight: {pokemon.weight} kg</span>
       </div>
 
       {/* Fila 6: Zona inferior */}
-      <div className="w-full border flex-1 flex items-center justify-center text-xs rounded">
-        <span>Zona inferior (stats / moves)</span>
+      <div className="w-full border flex-1 flex flex-col p-1 text-xs rounded">
+        {/* Fila 1: Título */}
+        <div className="w-full border-b pb-1">
+          <span className="font-bold">STATS</span>
+        </div>
+
+        {/* Fila 2: Stats propiamente dicho */}
+        <div className="flex flex-1 mt-1 gap-2">
+          {/* Columna izquierda */}
+          <div className="flex-1 flex flex-col gap-1 border p-1">
+            {/* Fila 1 */}
+            <div className="flex justify-between border p-1 rounded">
+              <span>HP: {pokemon.stats.hp}</span>
+              <span>slot</span>
+            </div>
+            {/* Fila 2 */}
+            <div className="flex justify-between border p-1 rounded">
+              <span>Attack: {pokemon.stats.attack}</span>
+              <span>slot</span>
+            </div>
+          </div>
+
+          {/* Columna derecha */}
+          <div className="flex-1 flex flex-col gap-1 border p-1">
+            {/* Fila 1 */}
+            <div className="flex justify-between border p-1 rounded">
+              <span>Defense: {pokemon.stats.defense}</span>
+              <span>slot</span>
+            </div>
+            {/* Fila 2 */}
+            <div className="flex justify-between border p-1 rounded">
+              <span>Speed: {pokemon.stats.speed}</span>
+              <span>slot</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
