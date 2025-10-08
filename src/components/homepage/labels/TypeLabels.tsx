@@ -1,7 +1,13 @@
 import { getTypeColor } from "../../../utils/getTypeColor";
 
-function TypeLabels() {
+interface TypeLabelsProps {
+  
+  onSelectType: (type: string) => void;
+}
+
+function TypeLabels({ onSelectType }: TypeLabelsProps) {
   const allTypes = [
+    "all",
     "fire",
     "water",
     "grass",
@@ -19,10 +25,10 @@ function TypeLabels() {
       {allTypes.map((type) => (
         <span
           key={type}
-          onClick={() => alert(`Tipo clicado: ${type}`)}
-          className={`cursor-pointer px-2 py-0.5 rounded-full text-xs ${getTypeColor(
-            type
-          )}`}
+          onClick={() => onSelectType(type)}
+          className={`cursor-pointer px-2 py-0.5 rounded-full text-xs font-semibold ${
+            getTypeColor(type)
+          }`}
         >
           {type.toUpperCase()}
         </span>

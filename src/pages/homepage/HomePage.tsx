@@ -8,6 +8,7 @@ import TypeLabels from "../../components/homepage/labels/TypeLabels";
 function HomePage() {
 
 const [searchTerm, setSearchTerm] = useState("");
+const [selectedType, setSelectedType] = useState<string | null>("all");
 
 
   return (
@@ -19,7 +20,8 @@ const [searchTerm, setSearchTerm] = useState("");
 
       {/* Fila 2 - Selectores de tags */}
       <div className=" h-[17%] overflow-x-auto flex items-center">
-       <TypeLabels/>
+      
+     <TypeLabels onSelectType={setSelectedType} />
        
       </div>
 
@@ -30,7 +32,7 @@ const [searchTerm, setSearchTerm] = useState("");
 
       {/* Fila 4 - Zona de Pokémon */}
       <div className=" flex-1 overflow-auto">
-      <RenderZone searchTerm={searchTerm} />
+     <RenderZone searchTerm={searchTerm} selectedType={selectedType} />
       </div>
       
     </div>
