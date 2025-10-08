@@ -1,3 +1,5 @@
+import { getTypeColor } from "../../../utils/getTypeColor";
+
 interface Pokemon {
   id: number;
   name: string;
@@ -9,12 +11,39 @@ interface PokemonCardProps {
   pokemon: Pokemon;
 }
 
+function PokemonCard({ pokemon }: PokemonCardProps) {
+  const handleViewDetails = () => {
+    alert(`Viewing details for ${pokemon.name}`);
+  };
 
-function PokemonCard({ pokemon  } : PokemonCardProps) {
   return (
-    <div className="border border-gray-400 rounded-md p-2 text-center bg-white">
-      <img src={pokemon.image} alt={pokemon.name} className="mx-auto w-20 h-20" />
-      <p className="font-semibold capitalize">{pokemon.name}</p>
+    <div className="border border-gray-200 rounded-2xl p-4 text-center bg-white ">
+      <img
+        src={pokemon.image}
+        alt={pokemon.name}
+        className="mx-auto w-30 h-30 object-contain -mt-5"
+      />
+      <p className="font-bold  capitalize -mt-3">{pokemon.name}</p>
+
+      <div className="flex justify-center gap-1 mt-1 ">
+        {pokemon.types.map((type, index) => (
+          <span
+            key={index}
+            className={`text-xs px-2 py-1 rounded-full capitalize ${getTypeColor(
+              type
+            )}`}
+          >
+            {type}
+          </span>
+        ))}
+      </div>
+
+      <button
+        onClick={handleViewDetails}
+        className="mt-3 px-3 py-1 bg-blue-400 text-white rounded-md text-sm hover:bg-blue-600 transition"
+      >
+        View details
+      </button>
     </div>
   );
 }
