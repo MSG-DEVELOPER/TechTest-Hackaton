@@ -1,20 +1,17 @@
-// BarraProgreso.jsx
-type ProgressBarProps = {
+
+interface ProgressBarProps {
   valor: number;
-};
+}
 
-
-function ProgressBar({ valor }:ProgressBarProps) {
-  const ancho = Math.min(valor, 110); // límite de 100px por si el valor es muy alto
-
+export default function ProgressBar({ valor }: ProgressBarProps) {
+  const ancho = Math.min(valor, 110);
   return (
-    <div className="w-[110px] h-2 bg-red-300 rounded">
+    <div role="progressbar" className="w-[110px] h-2 bg-red-300 rounded">
       <div
+        data-testid="progress-inner"
         className="h-full bg-blue-500 rounded"
         style={{ width: `${ancho}px` }}
-      ></div>
+      />
     </div>
   );
 }
-
-export default ProgressBar;
