@@ -12,7 +12,17 @@ interface PokemonStats {
   speed: number;
 }
 
-function extractStats(statsArray: any[]): PokemonStats {
+interface StatEntry {
+  base_stat: number;
+  stat: {
+    name: string;
+  };
+}
+
+
+
+
+function extractStats(statsArray: StatEntry[]): PokemonStats {
   const stats: PokemonStats = { hp: 0, attack: 0, defense: 0, speed: 0 };
 
   statsArray.forEach((statObj) => {

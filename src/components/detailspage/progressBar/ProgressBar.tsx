@@ -1,5 +1,10 @@
 // BarraProgreso.jsx
-function ProgressBar({ valor }) {
+type ProgressBarProps = {
+  valor: number;
+};
+
+
+function ProgressBar({ valor }:ProgressBarProps) {
   const ancho = Math.min(valor, 110); // límite de 100px por si el valor es muy alto
 
   return (
