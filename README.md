@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# Prova Frontend Hackató - Mini Pokédex
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Project deployed:** [https://tech-test-hackaton.vercel.app/](https://tech-test-hackaton.vercel.app/)
 
-Currently, two official plugins are available:
+## Description
+This is a Mini Pokédex web application built for a frontend hackathon. The app allows users to browse, search, and filter the first 50 Pokémon, view their details, and interact with their types.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Key features:**
+- Retrieve the first 50 Pokémon.
+- Display Pokémon name, image, and types as labels.
+- Search Pokémon by name with partial matches (case-insensitive) and display a message if none are found.
+- Filter Pokémon by type with horizontal scrolling if there are many types.
+- Pokémon detail view includes:
+  - Main image 
+  - Name and types
+  - Weight and height
+  - Button to return to the main list
 
-## React Compiler
+## Prerequisites
+- Node.js (v18 or higher recommended)
+- npm (v9 or higher)
+- Modern browser (Chrome, Edge, Firefox, etc.)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation and Running the Project
 
-## Expanding the ESLint configuration
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd vite-project
+   ```
+2. Run the project locally:
+  ```bash
+  npm run dev
+   ```
+3. Open your browser:
+  ```bash
+  http://localhost:5173
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+vite-project/
+├─ src/
+│  ├─ api/                 # API calls
+│  ├─ components/          # React components (Header, RenderZone, SearchBar, etc.)
+│  ├─ pages/               # Page components (HomePage, DetailPage)
+│  ├─ utils/               # Utility functions (e.g., getTypeColor)
+│  └─ index.tsx            # React entry point
+├─ public/                 # Static assets
+├─ package.json
+├─ vite.config.ts
+└─ tsconfig.json
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Recommended Manual Tests
+* Check that the first 50 Pokémon are displayed correctly.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* Verify Pokémon names, images, and type labels.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* Test the search bar for partial and case-insensitive matches.
+
+* Test the type filter and horizontal scroll if necessary.
+
+* Open a Pokémon detail page and check image, name, type, weight, height, and back button.
+
+* Ensure proper navigation between pages.
+
+
