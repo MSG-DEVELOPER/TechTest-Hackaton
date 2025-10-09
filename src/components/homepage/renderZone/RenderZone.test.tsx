@@ -2,13 +2,22 @@ import { render, screen, waitFor } from "@testing-library/react";
 import RenderZone from "./RenderZone";
 import { getPokemons } from "../../../api/pokemonApi";
 
+interface PokemonCardProps {
+  pokemon: {
+    id: number;
+    name: string;
+    image: string;
+    types: string[];
+  };
+}
+
 // Mock de getPokemons
 jest.mock("../../../api/pokemonApi", () => ({
   getPokemons: jest.fn(),
 }));
 
 // Mock de PokemonCard
-jest.mock("./PokemonCard", () => (props: any) => (
+jest.mock("./PokemonCard", () => (props: PokemonCardProps) => (
   <div>PokemonCard Mock - {props.pokemon.name}</div>
 ));
 

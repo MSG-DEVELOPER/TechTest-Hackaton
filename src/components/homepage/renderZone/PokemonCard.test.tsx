@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import PokemonCard from "./PokemonCard";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import * as utils from "../../../utils/getTypeColor";
 
 // Mock de useNavigate
