@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPokemons } from "../../../api/pokemonApi";
 import PokemonCard from "./PokemonCard";
+import Spinner from "../../common/Spinner";
 
 interface Pokemon {
   id: number;
@@ -16,6 +17,7 @@ interface RenderZoneProps {
 
 function RenderZone({ searchTerm, selectedType }: RenderZoneProps) {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,16 +26,31 @@ function RenderZone({ searchTerm, selectedType }: RenderZoneProps) {
         setPokemons(data);
       } catch (error) {
         console.error("Error fetching pokemons:", error);
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchData();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Spinner />
+      </div>
+    );
+  }
+
   // Filtramos por nombre y por tipo, teniendo en cuenta "all"
   const filteredPokemons = pokemons.filter((pokemon) => {
-    const matchesName = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesType = !selectedType || selectedType === "all" || pokemon.types.includes(selectedType);
+    const matchesName = pokemon.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesType =
+      !selectedType ||
+      selectedType === "all" ||
+      pokemon.types.includes(selectedType);
     return matchesName && matchesType;
   });
 
